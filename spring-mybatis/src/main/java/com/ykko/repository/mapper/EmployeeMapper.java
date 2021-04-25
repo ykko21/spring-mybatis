@@ -9,6 +9,6 @@ import com.ykko.entity.Employee;
 public interface EmployeeMapper {	
 	
 	Employee findByEmpNo(@Param("empno") int empno);
-	
+	void insertEmployee(Employee obj);
 	
 }

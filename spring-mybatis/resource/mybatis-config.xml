@@ -13,10 +13,10 @@
         </environment>
     </environments>
     -->
-    <mappers>        
-        <mapper resource="mapper/EmployeeMapper.xml" />
-         <!-- 
-        <mapper class="com.ykko.repository.mapper.EmployeeMapper" />
-         -->
-    </mappers>    
+    <mappers>
+        <mapper resource="mapper/*Mapper.xml" />
+        <!--
+        <mapper resource="com/ykko/repository/mapper/EmployeeMapper" />
+        -->
+    </mappers>
 </configuration>

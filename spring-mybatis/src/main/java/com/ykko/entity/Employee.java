@@ -13,6 +13,18 @@ public class Employee {
 	private int comm;
 	private int deptno;
 	
+	public Employee() {}	
+	public Employee(int empno, String ename, String job, int mgr, Date hiredate, int sal, int comm, int deptno) {
+		super();
+		this.empno = empno;
+		this.ename = ename;
+		this.job = job;
+		this.mgr = mgr;
+		this.hiredate = hiredate;
+		this.sal = sal;
+		this.comm = comm;
+		this.deptno = deptno;
+	}
 	public int getEmpno() {
 		return empno;
 	}

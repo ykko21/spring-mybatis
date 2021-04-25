@@ -23,13 +23,17 @@
 	<jee:jndi-lookup id="dbDataSource" jndi-name="jdbc/postgres" expected-type="javax.sql.DataSource" />
 	
 	<tx:annotation-driven transaction-manager="transactionManager" />
-	<bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">        
+	
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">        
         <property name="dataSource" ref="dbDataSource"/>
     </bean>
     
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
   		<property name="dataSource" ref="dbDataSource" />
   		<property name="mapperLocations" value="classpath:mapper/*.xml" />
+	    <property name="transactionFactory">
+	        <bean class="org.mybatis.spring.transaction.SpringManagedTransactionFactory" />
+	    </property>
 	</bean>
 		
 </beans>

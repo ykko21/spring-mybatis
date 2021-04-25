@@ -19,4 +19,11 @@
 		select empno, ename, job, mgr, hiredate, sal, comm, deptno from emp where empno = #{empno}
 	</select>
     
+	<insert id="insert" parameterType="com.ykko.entity.Employee">
+		insert into emp
+		(empno, ename, job, mgr, hiredate, sal, comm, deptno)
+		values
+		(#{empno}, #{ename}, #{job}, #{mgr}, #{hiredate}, #{sal}, #{comm}, #{deptno})
+	</insert>
+    
 </mapper>
