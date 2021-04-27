@@ -25,5 +25,14 @@
 		values
 		(#{empno}, #{ename}, #{job}, #{mgr}, #{hiredate}, #{sal}, #{comm}, #{deptno})
 	</insert>
+	
+	<insert id="batchInsert" parameterType="map">
+		insert into emp
+		(empno, ename, job, mgr, hiredate, sal, comm, deptno)
+		values
+		<foreach item="item" index="index" collection="list" open="" separator="," close="">
+			(#{item.empno}, #{item.ename}, #{item.job}, #{item.mgr}, #{item.hiredate}, #{item.sal}, #{item.comm}, #{item.deptno})
+		</foreach>		
+	</insert>
     
 </mapper>

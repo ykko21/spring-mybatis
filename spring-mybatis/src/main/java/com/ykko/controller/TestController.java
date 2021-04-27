@@ -1,6 +1,8 @@
 package com.ykko.controller;
 
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -114,8 +116,22 @@ public class TestController {
 		}
 	}	
 	
-	
-	
+	//http://localhost:8080/spring-mybatis/test/batchInsert
+	@PostMapping("/batchInsert")
+	public Response batchInsert() {
+		try {
+			List<Employee> list = new ArrayList<Employee>();
+			list.add(new Employee(7937, "AAA", "Engineer", 7902, new Date(System.currentTimeMillis()), 1000, 0, 20));
+			list.add(new Employee(7938, "BBB", "Engineer", 7902, new Date(System.currentTimeMillis()), 1000, 0, 20));					
+			empService.batchInsert(list);
+			return new Response("1",200,"OK");
+			
+		}
+		catch(Exception e) {
+			logger.error("",e);
+			return new Response("1",200,e.getMessage());	
+		}
+	}
 		
 	@PostMapping("/p2")
 	public Response p2(@RequestBody String payload) {		
