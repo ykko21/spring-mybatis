@@ -18,8 +18,13 @@
 						  http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 	
 	<mvc:annotation-driven />
+	<mvc:interceptors>
+		<bean class="com.ykko.interceptor.AuthenticationInterceptor" />
+		<bean class="com.ykko.interceptor.ValidationInterceptor" />
+	</mvc:interceptors>
+	
 	<context:component-scan base-package = "com.ykko" />
-		
+	
 	<jee:jndi-lookup id="dbDataSource" jndi-name="jdbc/postgres" expected-type="javax.sql.DataSource" />
 	
 	<tx:annotation-driven transaction-manager="transactionManager" />
