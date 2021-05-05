@@ -3,10 +3,12 @@ package com.ykko.controller;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -37,6 +39,9 @@ public class TestController {
 	@Autowired
 	private CompositeService compositeService;
 	
+	@Autowired
+    private MessageSource messageSource;
+	
 	public TestController() {
 		if(logger.isDebugEnabled()) {
 			logger.debug("*** TestController created! ***");
@@ -46,6 +51,10 @@ public class TestController {
 	//http://localhost:8080/spring-mybatis/test/g1
 	@GetMapping("/g1")
 	public Response g1() {
+		logger.info(messageSource.getMessage("m1", null, Locale.ENGLISH));
+		logger.info(messageSource.getMessage("m1", null, Locale.KOREAN));
+		logger.info(messageSource.getMessage("m2", new Object[] {"World"}, Locale.ENGLISH));
+		logger.info(messageSource.getMessage("m2", new Object[] {"World"}, Locale.KOREAN));
 		return new Response("1",200,"g1");
 	}
 	
